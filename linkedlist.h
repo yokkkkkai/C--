@@ -98,6 +98,50 @@ public:
         return current->data;
     }
 
+    bool operator==(const List& other) const {
+        if(size != other.size) return false;
+
+        Node<T>* currentOther = other.head;
+        Node<T>* current = head;
+
+        while(current != nullptr && currentOther != nullptr) {
+            if(current->data != currentOther->data)
+                return false;
+            
+            current = current->next;
+            currentOther = currentOther->next;
+        }
+
+        return current == nullptr && currentOther == nullptr;
+    }
+
+    bool operator!=(const List& other) const {
+        if(size != other.size) return true;
+        Node<T>* currentOther = other.head;
+        Node<T>* current = head;
+        while(current != nullptr && currentOther != nullptr) {
+            if(current->data != currentOther->data)
+                return true;
+            
+            current = current->next;
+            currentOther = currentOther->next;
+        }
+
+        return !(current == nullptr && currentOther == nullptr);
+    }
+
+    List<T>& operator+=(const List<T>& other) {
+        if(other.size == 0)
+            return *this;
+
+        Node<T>* currentOther = other.head;
+        while(currentOther != nullptr) {
+            append(currentOther->data);
+            currentOther = currentOther->next.
+        }
+        return *this;
+    }
+
     // Element Access
     T get(size_t index) const {
         if (index >= size) {
