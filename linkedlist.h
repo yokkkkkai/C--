@@ -137,7 +137,7 @@ public:
         Node<T>* currentOther = other.head;
         while(currentOther != nullptr) {
             append(currentOther->data);
-            currentOther = currentOther->next.
+            currentOther = currentOther->next;
         }
         return *this;
     }
